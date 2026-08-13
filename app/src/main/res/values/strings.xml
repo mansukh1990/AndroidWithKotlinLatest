@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AnimationAndroid</string>
+    <string name="str_new">New</string>
+    <string name="str_open">Open</string>
+    <string name="str_save">Save</string>
+    <string name="ic_search">Search</string>
+</resources>
