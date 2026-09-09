@@ -44,7 +44,7 @@
         android:theme="@style/Theme.AnimationAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".radiobuttonwithviewpagertwo.RadiobuttonWithViewpagerTwoActivity"
+            android:name=".bottomnavigation.BottomNavigationViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,17 +53,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".tablayoutwithviewpagertwo.TabLayoutWithVIewPagerTwoActivity"
+            android:name=".radiobuttonwithviewpagertwo.RadiobuttonWithViewpagerTwoActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".tablayoutwithviewpagertwo.TabLayoutWithVIewPagerTwoActivity"
+            android:exported="false" />
         <activity
             android:name=".tablayoutwithviewpager.TabLayoutWithViewpagerActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".fragment_dynamic.FragmentDynamicActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".fragment.FragmentActivity"
             android:exported="false" />
