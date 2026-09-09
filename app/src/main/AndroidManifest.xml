@@ -44,6 +44,15 @@
         android:theme="@style/Theme.AnimationAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".tablayoutwithviewpagertwo.TabLayoutWithVIewPagerTwoActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".tablayoutwithviewpager.TabLayoutWithViewpagerActivity"
             android:exported="true">
             <intent-filter>
