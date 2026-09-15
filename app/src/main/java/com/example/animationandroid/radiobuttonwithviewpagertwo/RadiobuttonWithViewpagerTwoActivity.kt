@@ -1,59 +1,72 @@
 package com.example.animationandroid.radiobuttonwithviewpagertwo
 
 import android.os.Bundle
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.animationandroid.R
+import com.example.animationandroid.databinding.ActivityRadiobuttonWithViewpagerTwoBinding
 import com.example.animationandroid.tablayoutwithviewpagertwo.ViewPagerTwoAdapter
 
 class RadiobuttonWithViewpagerTwoActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityRadiobuttonWithViewpagerTwoBinding
     private lateinit var viewPagerTwoAdapter: ViewPagerTwoAdapter
-    var viewPager: ViewPager2? = null
-    var radioGroup: RadioGroup? = null
-    var radioButtonChat: RadioButton? = null
-    var radioButtonStatus: RadioButton? = null
-    var radioButtonCalls: RadioButton? = null
+    private var isRadiobutton = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_radiobutton_with_viewpager_two)
+
+        binding = ActivityRadiobuttonWithViewpagerTwoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        viewPager = findViewById(R.id.viewPagerRadio)
-        radioGroup = findViewById(R.id.radioGroup)
-        radioButtonChat = findViewById(R.id.radioChat)
-        radioButtonStatus = findViewById(R.id.radioStatus)
-        radioButtonCalls = findViewById(R.id.radioCall)
 
         viewPagerTwoAdapter = ViewPagerTwoAdapter(this)
-        viewPager!!.setAdapter(viewPagerTwoAdapter)
+        binding.viewPagerRadio.setAdapter(viewPagerTwoAdapter)
 
-        viewPager!!.setUserInputEnabled(false)
+        binding.viewPagerRadio.setUserInputEnabled(true)
 
-        radioGroup!!.setOnCheckedChangeListener { _, checkedId ->
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+
+            if (isRadiobutton) return@setOnCheckedChangeListener
+
             when (checkedId) {
-                R.id.radioChat -> {
-                    viewPager!!.currentItem = 0
+                binding.radioChat.id -> {
+                    binding.viewPagerRadio.currentItem = 0
                 }
-                R.id.radioStatus -> {
-                    viewPager!!.currentItem = 1
+
+                binding.radioStatus.id -> {
+                    binding.viewPagerRadio.currentItem = 1
                 }
-                else -> {
-                    viewPager!!.currentItem = 2
+
+                binding.radioCall.id -> {
+                    binding.viewPagerRadio.currentItem = 2
                 }
             }
         }
+        binding.viewPagerRadio.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+
+                isRadiobutton = true
+
+                when (position) {
+                    0 -> binding.radioChat.setChecked(true)
+                    1 -> binding.radioStatus.setChecked(true)
+                    2 -> binding.radioCall.setChecked(true)
+                }
+                isRadiobutton = false
+            }
+        })
 
     }
 }
