@@ -6,25 +6,25 @@
         android:id="@+id/option_new"
         android:icon="@drawable/ic_baseline_create_new_folder_24"
         android:title="@string/str_new"
-        app:showAsAction="collapseActionView" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/option_open"
         android:icon="@drawable/ic_baseline_open_in_browser_24"
         android:title="@string/str_open"
-        app:showAsAction="collapseActionView" />
+        app:showAsAction="never" />
 
 
     <item
         android:id="@+id/option_save"
         android:icon="@drawable/ic_baseline_save_24"
         android:title="@string/str_save"
-        app:showAsAction="collapseActionView" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/option_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
 </menu>
