@@ -7,8 +7,7 @@ import com.example.animationandroid.tablayoutwithviewpager.CallsFragment
 import com.example.animationandroid.tablayoutwithviewpager.ChatFragment
 import com.example.animationandroid.tablayoutwithviewpager.StatusFragment
 
-class ViewPagerTwoAdapter(fragmentActivity: FragmentActivity) :
-    FragmentStateAdapter(fragmentActivity) {
+class ViewPagerTwoAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     override fun createFragment(position: Int): Fragment {
 
         return when (position) {
@@ -18,6 +17,10 @@ class ViewPagerTwoAdapter(fragmentActivity: FragmentActivity) :
 
             1 -> {
                 StatusFragment()
+            }
+
+            2 -> {
+                CallsFragment()
             }
 
             else -> {

@@ -13,6 +13,7 @@ import com.example.animationandroid.tablayoutwithviewpagertwo.ViewPagerTwoAdapte
 
 class RadiobuttonWithViewpagerTwoActivity : AppCompatActivity() {
 
+    private lateinit var viewPagerTwoAdapter: ViewPagerTwoAdapter
     var viewPager: ViewPager2? = null
     var radioGroup: RadioGroup? = null
     var radioButtonChat: RadioButton? = null
@@ -35,7 +36,7 @@ class RadiobuttonWithViewpagerTwoActivity : AppCompatActivity() {
         radioButtonStatus = findViewById(R.id.radioStatus)
         radioButtonCalls = findViewById(R.id.radioCall)
 
-        val viewPagerTwoAdapter = ViewPagerTwoAdapter(this)
+        viewPagerTwoAdapter = ViewPagerTwoAdapter(this)
         viewPager!!.setAdapter(viewPagerTwoAdapter)
 
         viewPager!!.setUserInputEnabled(false)
