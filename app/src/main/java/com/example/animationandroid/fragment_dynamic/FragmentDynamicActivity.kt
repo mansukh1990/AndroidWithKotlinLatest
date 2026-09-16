@@ -1,46 +1,46 @@
 package com.example.animationandroid.fragment_dynamic
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.animationandroid.R
+import com.example.animationandroid.databinding.ActivityFragmentDynamicBinding
 
 class FragmentDynamicActivity : AppCompatActivity() {
 
-    private var btnFragA: Button? = null
-    private var btnFragB: Button? = null
-    private var btnFragC: Button? = null
+    companion object {
+        const val ROOT_FRAGMENT_TAG: String = "root_fragment"
+    }
+
+    private var binding: ActivityFragmentDynamicBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_fragment_dynamic)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        binding = ActivityFragmentDynamicBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding!!.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        btnFragA = findViewById<Button?>(R.id.btnFragA)
-        btnFragB = findViewById<Button?>(R.id.btnFragB)
-        btnFragC = findViewById<Button?>(R.id.btnFragC)
+        loadFragment(FragmentAFragment().getInstance("jignesh", 41), 0)
 
-        loadFragment(FragmentAFragment(),0)
-
-        btnFragA?.setOnClickListener {
+        binding?.btnFragA?.setOnClickListener {
             loadFragment(FragmentAFragment(),1)
 
         }
 
-        btnFragB?.setOnClickListener {
+        binding?.btnFragB?.setOnClickListener {
             loadFragment(FragmentBFragment(),1)
         }
 
-        btnFragC?.setOnClickListener {
+        binding?.btnFragC?.setOnClickListener {
             loadFragment(FragmentCFragment(),1)
         }
     }
@@ -49,8 +49,25 @@ class FragmentDynamicActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
 
-        if (flag == 0) fragmentTransaction.add(R.id.container, fragment)
-        else fragmentTransaction.replace(R.id.container, fragment)
+//        val bundle = Bundle()
+//
+//        bundle.putString("Arg1", "Raman")
+//        bundle.putInt("Arg2", 7)
+//
+//        fragment.setArguments(bundle)
+
+        if (flag == 0) {
+            fragmentTransaction.add(R.id.container, fragment)
+            fragmentManager.popBackStack(
+                ROOT_FRAGMENT_TAG,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
+            fragmentTransaction.addToBackStack(ROOT_FRAGMENT_TAG)
+        } else {
+            fragmentTransaction.replace(R.id.container, fragment)
+            fragmentTransaction.addToBackStack(null)
+        }
+
 
         fragmentTransaction.commit()
     }
