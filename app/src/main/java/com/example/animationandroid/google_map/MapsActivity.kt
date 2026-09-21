@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolygonOptions
 import java.io.IOException
+import androidx.core.graphics.createBitmap
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -87,7 +88,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .position(latLng2)
                 .title("Marker2")
                 .snippet("This is marker2 location")
-                .icon(bicycleIcon)
+                .icon(vectorToBitmap(this, R.drawable.ic_google_maps))
         )
 
         //circle
@@ -202,7 +203,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         var bitmap: Bitmap? = null
         val drawable = ResourcesCompat.getDrawable(resources, icGoogleMaps, null)
         if (drawable != null) {
-            bitmap = Bitmap.createBitmap(150, 150, Bitmap.Config.ARGB_8888)
+            bitmap = createBitmap(150, 150)
             val canvas = Canvas(bitmap)
             drawable.setBounds(0, 0, canvas.width, canvas.height)
             drawable.draw(canvas)
@@ -210,8 +211,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         return bitmap
     }
-    private val bicycleIcon: BitmapDescriptor by lazy {
-        val color = ContextCompat.getColor(this, R.color.color_dark_blue)
-        vectorToBitmap(this, R.drawable.ic_google_maps)
-    }
+    // No global bicycleIcon field needed anymore
 }

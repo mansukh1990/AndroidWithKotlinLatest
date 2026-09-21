@@ -10,4 +10,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_google_map_cluster">GoogleMapClusterActivity</string>
+    <string name="title_activity_googlr_map_with_custom_info_window">
+        GooglrMapWithCustomInfoWindowActivity
+    </string>
 </resources>
