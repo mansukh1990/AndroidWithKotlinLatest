@@ -111,12 +111,16 @@
             android:name=".google_map.GoogleMapClusterActivity"
             android:exported="false"
             android:label="@string/title_activity_google_map_cluster"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".google_map.GoogleMapWithCustomInfoWindowActivity"
+            android:exported="false"
+            android:label="@string/title_activity_googlr_map_with_custom_info_window"
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-            android:name=".google_map.GoogleMapWithCustomInfoWindowActivity"
+            android:name=".sharepreference.SharedPreferenceActivity"
             android:exported="true"
-            android:label="@string/title_activity_googlr_map_with_custom_info_window"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -124,6 +128,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".sharepreference.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".sharepreference.HomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
