@@ -2,8 +2,17 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.AnimationAndroid" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.AnimationAndroid" parent="Base.Theme.AnimationAndroid" />
+
+    <!-- Corner Shape Overlays for ShapeableImageView -->
+    <style name="ShapeAppearanceOverlay.App.CornerRadius24" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize16dp" parent="">
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>
