@@ -14,7 +14,7 @@
         android:layout_marginTop="50dp"
         android:padding="2dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_contact_profile"
+        android:src="@android:drawable/ic_menu_gallery"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRadius24"
         app:strokeColor="@color/color_stroke"
         app:strokeWidth="3dp"
