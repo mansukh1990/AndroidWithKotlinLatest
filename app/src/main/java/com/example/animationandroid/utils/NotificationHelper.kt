@@ -136,6 +136,29 @@ object NotificationHelper {
         sendNotification(context, builder)
     }
 
+    fun showNotificationBigPictureBitmap(
+        context: Context,
+        title: String?,
+        message: String?,
+        bigPictureBitmap: Bitmap,
+        iconResId: Int,
+        destinationIntent: Intent,
+        useTaskStack: Boolean = false
+    ) {
+        val builder = showNotification(
+            context, title, message, iconResId, destinationIntent, useTaskStack
+        )
+
+        val bigPictureStyle = NotificationCompat.BigPictureStyle()
+            .bigPicture(bigPictureBitmap)
+            .setBigContentTitle(title)
+            .setSummaryText(message)
+            .bigLargeIcon(null as Bitmap?)
+
+        builder.setStyle(bigPictureStyle)
+        sendNotification(context, builder)
+    }
+
     private fun buildPendingIntent(
         context: Context?,
         destinationIntent: Intent,
