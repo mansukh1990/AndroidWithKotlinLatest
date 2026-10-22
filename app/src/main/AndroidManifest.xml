@@ -7,7 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <queries>
         <package android:name="com.google.android.gms" />
@@ -121,8 +123,7 @@
         <activity
             android:name=".sharepreference.SharedPreferenceActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".sharepreference.LoginActivity"
             android:exported="false"
@@ -133,6 +134,10 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".pick_image_from_camera_gallery.PickImageFromCameraGalleryActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".sensor.SensorActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
