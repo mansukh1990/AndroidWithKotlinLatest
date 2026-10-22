@@ -21,6 +21,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.os.BundleCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.animationandroid.R
@@ -58,12 +59,7 @@ class PickImageFromCameraGalleryActivity : AppCompatActivity() {
             if (result.resultCode == RESULT_OK && result.data != null) {
                 val extras = result.data?.extras
                 if (extras != null) {
-                    val bitmap: Bitmap? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        extras.getParcelable("data", Bitmap::class.java)
-                    } else {
-                        @Suppress("DEPRECATION")
-                        extras.getParcelable("data") as? Bitmap
-                    }
+                    val bitmap: Bitmap? = BundleCompat.getParcelable(extras, "data", Bitmap::class.java)
                     if (bitmap != null) {
                         binding?.imgProfile?.setImageBitmap(bitmap)
                     }
